@@ -1,0 +1,43 @@
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        int beg=0;
+        int end=letters.length-1;
+        int mid=0;
+        char solution=' ';
+        if((target<letters[0])||(target>=letters[end]))
+        {
+            solution=letters[0];
+        }
+        else
+        {
+        while(beg<=end)
+        {
+            mid=(beg+end)/2;
+             if(letters[mid]==target)
+            {
+                if(letters[mid]==letters[mid+1])
+                {
+                    beg=mid+1;
+                }
+                else
+                {
+                solution=letters[mid+1];
+                break;
+                }
+                
+            }
+            else if(letters[mid]>target)
+            {
+                solution=letters[mid];
+                end=mid-1;
+            }
+            else
+            {
+                beg=mid+1;
+            }
+
+        }
+        }
+        return solution;
+    }
+}
